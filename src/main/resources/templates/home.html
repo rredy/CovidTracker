@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-
+<div class="container">
 <head>
     <title>Corona real time tracker</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,22 +11,38 @@
 
 <body>
 
+<h1>Corona virus tracker application </h1>
+<p>This application list the current number of active covid cases across the globe</p>
+
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${totalReportedCases}"></h1>
+    <p class="lead">Total cases reported as of today</p>
+    <hr class="my-4">
+    <p>
+        <span>Total new cases from previous </span>
+        <span th:text="${previousday}"></spanth:text></span>
+    </p>
 
 
-<table>
+
+</div>
+<!--<div class="container">-->
+<table class="table">
     <tr>
         <th>state</th>
         <th>country</th>
         <th>Total cases reported</th>
+        <th>Changes from previous day</th>
     </tr>
     <tr th:each="prod : ${locationStats}">
         <td th:text="${prod.state}"></td>
         <td th:text="${prod.country}"></td>
         <td th:text="${prod.latestTotalCases}">0</td>
+        <td th:text="${prod.diffFromPrevious}">0</td>
     </tr>
 </table>
 
 
 </body>
-
+</div>
 </html>
